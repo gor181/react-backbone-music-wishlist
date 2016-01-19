@@ -1,0 +1,5 @@
+--compilers js:babel-register
+--require dom.js
+--require chai
+--reporter spec
+--full-trace

@@ -1,0 +1,34 @@
+.album-combinations .panel-heading .panel-title {
+    line-height: 35px;
+}
+.album-combinations .panel-heading .form-group {
+    margin-bottom: 0px;
+}
+
+.album-combinations .combination-amount {
+    width: 150px;
+}
+
+.sortBy {
+    margin: 0px 5px;
+}
+
+.sortBy.form-group label {
+    float: left;
+    text-align: left;
+    font-weight: normal;
+}
+
+.sortBy.form-group select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.add-album input {
+    width: 100% !important;
+}
+
+.add-album .form-group {
+    width: 100% !important;
+}
