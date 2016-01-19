@@ -1,4 +1,5 @@
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const classnames = require('classnames');
 const { map, flow, isFunction } = require('lodash');
 
@@ -44,6 +45,8 @@ const TH = (props) => {
 };
 
 const Table = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'Table',
 

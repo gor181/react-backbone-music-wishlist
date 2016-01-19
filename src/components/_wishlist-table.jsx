@@ -1,10 +1,13 @@
-const { noop, reduce } = require('lodash');
+const { reduce } = require('lodash');
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const Table = require('./common/table/table');
 
 const AlbumsActions = require('../actions/albums');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'WishlistTable',
 

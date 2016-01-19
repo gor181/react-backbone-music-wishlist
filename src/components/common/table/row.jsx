@@ -1,7 +1,10 @@
 const { map, noop } = require('lodash');
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
     
     displayName: 'TableRow',
 

@@ -1,8 +1,12 @@
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const classnames = require('classnames');
 const { isEmpty, noop } = require('lodash');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
+
     displayName: 'TextInput',
 
     propTypes: {
@@ -32,10 +36,6 @@ module.exports = React.createClass({
 
     componentWillReceiveProps(props) {
         this._setValue(props.value);
-    },
-
-    shouldComponentUpdate() {
-        return true;
     },
 
     _onChange(evnt) {

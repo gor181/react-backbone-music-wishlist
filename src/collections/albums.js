@@ -1,4 +1,4 @@
-const { findIndex } = require('lodash');
+const { remove, clone } = require('lodash');
 const BB = require('backbone');
 const Dispatcher = require('../dispatcher');
 const AlbumModel = require('../models/album');
@@ -22,24 +22,29 @@ const Albums = BB.Collection.extend({
     onDispatch(payload) {
         switch(payload.actionType) {
             case Events.ADD_ALBUM:
-                this.add({
+                this.reset([...this.toJSON(), {
                     album: payload.album,
                     amount: payload.amount
-                });
+                }]);
                 this.emitChange();
                 break;
             case Events.REMOVE_ALBUM:
-                this.remove([payload.cid]) 
+                const albumIndex = this.indexOf(this.get(payload.cid));
+                this.reset([...remove(this.toJSON(), (v, i) => i !== albumIndex)]);
+
                 this.emitChange();
                 break;
             case Events.MOVE_ALBUM:
-                const { model, toModel } = payload;
+                 const { model, toModel } = payload;
+                 const collection = clone(this);
 
                 //Remove model
-                const moveToIndex = findIndex(this.models, { cid: toModel.id });
-                const removedModel = this.remove(model.id);
+                const moveToIndex = collection.indexOf(collection.get(toModel.id));
+                const removedModel = collection.remove(model.id);
 
-                this.add(removedModel, { at: moveToIndex });
+                collection.add(removedModel, { at: moveToIndex });
+
+                this.reset(collection.toJSON());
                 this.emitChange();
                 break;
         }
