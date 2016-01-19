@@ -1,4 +1,3 @@
-const { pick } = require('lodash');
 const React = require('react');
 const Wishlist = require('./wishlist');
 
