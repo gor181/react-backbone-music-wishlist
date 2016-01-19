@@ -26,19 +26,20 @@ describe('Collections:Albums', function () {
         AlbumActions.addAlbum('Fear of the dark', 150);
         AlbumActions.addAlbum('TNT', 200);
 
-        const FirstAlbum = AlbumCollection.at(0);
-        const SecondAlbum = AlbumCollection.at(1);
+        let FirstAlbum = AlbumCollection.at(0);
+        let SecondAlbum = AlbumCollection.at(1);
 
-        //Check initial order
-        expect(AlbumCollection.indexOf(FirstAlbum)).to.equal(0);
-        expect(AlbumCollection.indexOf(SecondAlbum)).to.equal(1);
+        expect(FirstAlbum.get('album')).to.equal('Fear of the dark');
+        expect(SecondAlbum.get('album')).to.equal('TNT');
 
         //Change the order
         AlbumActions.moveAlbum({ id: FirstAlbum.cid }, { id: SecondAlbum.cid });
+
+        FirstAlbum = AlbumCollection.at(0).toJSON();
+        SecondAlbum = AlbumCollection.at(1).toJSON();
         
-        //Check the changed order
-        expect(AlbumCollection.indexOf(FirstAlbum)).to.equal(1);
-        expect(AlbumCollection.indexOf(SecondAlbum)).to.equal(0);
+        expect(FirstAlbum.album).to.equal('TNT');
+        expect(SecondAlbum.album).to.equal('Fear of the dark');
     });
 });
 
