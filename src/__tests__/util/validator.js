@@ -7,11 +7,13 @@ describe('Util:Validator', function () {
         expect(Validator.isValidAmount(1.2)).to.be.true;
         expect(Validator.isValidAmount("0")).to.be.true;
         expect(Validator.isValidAmount("99")).to.be.true;
+        expect(Validator.isValidAmount(-1)).to.be.false;
     });
 
     it('validates text', function () {
         expect(Validator.isValidText("Hero!")).to.be.true;
         expect(Validator.isValidText("")).to.be.false;
+        expect(Validator.isValidText("   ")).to.be.false;
     });
 })
 
