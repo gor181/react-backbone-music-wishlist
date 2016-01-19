@@ -1,4 +1,4 @@
-const { debounce, reduce, map, isEqual } = require('lodash');
+const { map } = require('lodash');
 const React = require('react');
 const classnames = require('classnames');
 
@@ -32,16 +32,6 @@ module.exports = React.createClass({
         };
     },
 
-
-    componentDidMount() {
-        this._generateCombinations = debounce((albums, maxAmount) => {
-            this.setState({
-                ...this.state,
-                combinations: AlbumsHelper.getCombinationsWithinBudget(albums, maxAmount)
-            });
-        }, 250);
-    },
-
     componentWillReceiveProps(nextProps) {
         this._generateCombinations(nextProps.albums, this.state.maxAmount.value);
     },
@@ -54,6 +44,13 @@ module.exports = React.createClass({
                 hasError: !isValid
             }
         }, () => isValid && this._generateCombinations(albums, amount));
+    },
+
+    _generateCombinations(albums, maxAmount) {
+        this.setState({
+            ...this.state,
+            combinations: AlbumsHelper.getCombinationsWithinBudget(albums, maxAmount)
+        });
     },
 
     render() {
