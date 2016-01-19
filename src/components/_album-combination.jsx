@@ -1,8 +1,11 @@
 const { map } = require('lodash');
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const classnames = require('classnames');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'AlbumCombination',
 

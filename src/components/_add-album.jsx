@@ -1,11 +1,14 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const classnames = require('classnames');
 
 const TextInput = require('./common/text-input');
 const Validator = require('../util/validator');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'AddAlbum',
 

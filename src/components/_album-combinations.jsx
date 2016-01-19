@@ -1,5 +1,6 @@
 const { map } = require('lodash');
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 const classnames = require('classnames');
 
 const TextInput = require('./common/text-input');
@@ -9,6 +10,8 @@ const Validator = require('../util/validator');
 const AlbumsHelper = require('../helpers/albums');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'AlbumCombinations',
 

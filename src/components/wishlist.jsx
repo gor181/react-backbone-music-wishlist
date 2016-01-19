@@ -1,4 +1,5 @@
 const React = require('react');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 
 const NavBar = require('./_navbar');
 const WishlistTable = require('./_wishlist-table');
@@ -7,6 +8,8 @@ const AlbumCombinations = require('./_album-combinations');
 const AlbumsActions = require('../actions/albums');
 
 module.exports = React.createClass({
+
+    mixins: [PureRenderMixin],
 
     displayName: 'Wishlist',
 
