@@ -2,7 +2,15 @@
 React-Backbone Music WishList
 =====================
 
-Demo project made as per specification.
+Demo project using:  
+* React for the view  
+* Backbone collections for the store  
+* Flux dispatcher  
+* Mocha + JSDOM for tests  
+  
+What it allows:  
+* Add, remove, reorder your albums  
+* Enter amount of money to get all the combinations for your bucks  
 
 ### Usage
 
